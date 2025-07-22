@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Desafio UC4</title>
+</head>
+
+<body>
+    <header class="bg-primary text-white text-center py-3">
+        <h1>Desafio UC4 - Consumindo API de Países</h1>
+    </header>
+    <section class="container">
+        <div class="row">
+            <h2 class="my-4 text-center">Lista de Países</h2>
+            <div id="filtro" class="col-md-12 mb-4 d-flex justify-content-center">
+                <label for="continent" class="form-label">Filtrar por continente:</label>
+                <select id="continent" class="form-select w-auto d-inline-block ms-2">
+                    <option value="Todos">Todos</option>
+                    <option value="Africa">África</option>
+                    <option value="Americas">Américas</option>
+                    <option value="Asia">Ásia</option>
+                    <option value="Europe">Europa</option>
+                    <option value="Oceania">Oceania</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" id="countriesGrid">
+
+        </div>
+    </section>
+    <script src="script.js"></script>
+    <footer class="bg-dark text-white text-center py-3 fixed-bottom">
+        <p>&copy; 2025 Desafio UC4</p>
+    </footer>
+</body>
+
+</html>
