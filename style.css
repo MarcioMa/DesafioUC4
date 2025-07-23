@@ -13,9 +13,7 @@
 
 .card-img-top {
     height: 150px;
-    /* altura fixa */
     object-fit: cover;
-    /* corta a imagem para caber */
 }
 
 .card {
