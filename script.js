@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const continentSelect = document.getElementById('continent');
     const countriesGrid = document.getElementById('countriesGrid');
     const btnBuscar = document.getElementById('btnBuscar');
-    const favoritoKey = 'meusPaisesFavorito';
 
     const response = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,capital,region');
     const countries = await response.json();
@@ -95,13 +94,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
     });
-
-    const btnFavorito = document.getElementById('bntFavorito');
-
-    btnFavorito.addEventListener('click', () => {
-
-    });
-
 });
 
 const btn = document.getElementById('toggleDarkMode');
@@ -120,15 +112,3 @@ btn.addEventListener('click', () => {
     const isDark = document.body.classList.toggle('dark-mode');
     setDarkMode(isDark);
 });
-
-
-const Favorito = [];
-
-function getFavoritos() {
-    const strFavorito = localStorage.getItem(favoritoKey);
-    return strFavorito ? JSON.parse(arrFavoritos) : [];
-}
-
-function setFatoritos(){
-    localStorage.setItem(favoritoKey, JSON.stringify(Favoritos))
-}
