@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const continentSelect = document.getElementById('continent');
     const countriesGrid = document.getElementById('countriesGrid');
     const btnBuscar = document.getElementById('btnBuscar');
+    const favoritoKey = 'meusPaisesFavorito';
 
     const response = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,capital,region');
     const countries = await response.json();
@@ -23,7 +24,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p class="card-title"><b>Local:</b> ${c.name.common}</p>
                         <p class="card-text"><b>Capital:</b> ${c.capital ? c.capital[0] : 'N/A'}</p>
                     </div>
-                </div>
+                <button id="btnFavorito" class="btn btn-primary btn-sm position-absolute start-50 translate-middle-x" style="bottom: 10px;">
+                    <i class="fa-solid fa-star fa-xs"></i> Add Favorito
+                </button>
+            </div>
             `;
             document.getElementById('countriesGrid').appendChild(card);
         });
@@ -34,12 +38,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         const card = document.createElement('div');
         card.className = 'col-sm-6 col-md-4 col-lg-3 mb-4 d-flex';
         card.innerHTML = `
-            <div class="card">
+            <div class="card position-relative">
                 <img src="${c.flags.svg}" class="card-img-top" alt="Bandeira de ${c.name.common}">
                 <div class="card-body">
                     <p class="card-title"><b>Local:</b> ${c.name.common}</p>
                     <p class="card-text"><b>Capital:</b> ${c.capital ? c.capital[0] : 'N/A'}</p>
                 </div>
+                <button id="btnFavorito" class="btn btn-primary btn-sm position-absolute start-50 translate-middle-x" style="bottom: 10px;">
+                    <i class="fa-solid fa-star fa-xs"></i> Add Favorito
+                </button>
             </div>
         `;
         document.getElementById('countriesGrid').appendChild(card);
@@ -59,7 +66,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <p class="card-title"><b>Local:</b> ${c.name.common}</p>
                             <p class="card-text"><b>Capital:</b> ${c.capital ? c.capital[0] : 'N/A'}</p>
                         </div>
-                    </div>
+                <button id="btnFavorito" class="btn btn-primary btn-sm position-absolute start-50 translate-middle-x" style="bottom: 10px;">
+                    <i class="fa-solid fa-star fa-xs"></i> Add Favorito
+                </button>
+            </div>
                 `;
                 document.getElementById('countriesGrid').appendChild(card);
             });
@@ -76,12 +86,22 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p class="card-title"><b>Local:</b> ${c.name.common}</p>
                         <p class="card-text"><b>Capital:</b> ${c.capital ? c.capital[0] : 'N/A'}</p>
                     </div>
-                </div>
+                <button id="btnFavorito" class="btn btn-primary btn-sm position-absolute start-50 translate-middle-x" style="bottom: 10px;">
+                    <i class="fa-solid fa-star fa-xs"></i> Add Favorito
+                </button>
+            </div>
             `;
                 document.getElementById('countriesGrid').appendChild(card);
             });
         }
     });
+
+    const btnFavorito = document.getElementById('bntFavorito');
+
+    btnFavorito.addEventListener('click', () => {
+
+    });
+
 });
 
 const btn = document.getElementById('toggleDarkMode');
@@ -100,3 +120,15 @@ btn.addEventListener('click', () => {
     const isDark = document.body.classList.toggle('dark-mode');
     setDarkMode(isDark);
 });
+
+
+const Favorito = [];
+
+function getFavoritos() {
+    const strFavorito = localStorage.getItem(favoritoKey);
+    return strFavorito ? JSON.parse(arrFavoritos) : [];
+}
+
+function setFatoritos(){
+    localStorage.setItem(favoritoKey, JSON.stringify(Favoritos))
+}
